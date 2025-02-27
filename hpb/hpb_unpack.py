@@ -31,7 +31,7 @@ for i in range(count):
     data_f.seek(itemoffset, 0)
     itemdata = data_f.read(itemsize)
     assert itemcrc == crc32(itemdata)
-    p = (Path(f'{packname}_out') / (f"{i:03d}."+paths[i]))
+    p = (Path(f'{packname}_out') / (f"{i:03d}."+paths[i].replace('/', '__'))).resolve()
     p.parent.mkdir(parents=True, exist_ok=True)
     with p.open('wb') as item_f:
         item_f.write(itemdata)

@@ -24,7 +24,7 @@ you may change code below in `hese_dasm.py` before use on other Hunex games (Mei
 
 ## hpb/hph: assetbundles' bundle and header file
 
-.hpb/hph -> index.filename (assetbundle)
+.hpb/hph -> index.filename(replaced / to __) (assetbundle)
 
 - `hpb_unpack.py`: modded from https://gist.github.com/kjy00302/34461f7ced79be7c48e3d46ae94f047b
 

@@ -58,6 +58,7 @@ def repack(packname):
     name_block = bytearray()
     for path in files:
         path = path.split('.')[-1]
+        path = path.replace('__', '/')
         name_block.extend(path.encode('utf-8'))
         name_block.append(0)
     
