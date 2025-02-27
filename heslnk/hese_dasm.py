@@ -481,8 +481,7 @@ def parse_dasm(dasm_path, output_path):
                 name_tag = get_dialog(param2)
                 f.write(f"{param2:04x} {name_tag}:\n")
                 f.write(f"{param:04x} {select}:\n\n")
-
-    
+                
     print(" parsed")
 
 
@@ -494,7 +493,7 @@ if __name__ == "__main__":
     if not os.path.exists("dasm"): os.makedirs("dasm")
     if not os.path.exists("text"): os.makedirs("text")
     # for file_path in sys.argv[1:]:
-    for root, dirs, files in os.walk("script.out_orig"):
+    for root, dirs, files in os.walk("script_out"):
         for file in files:
             if file.endswith(".hese"):
                 file_path = os.path.join(root, file)

@@ -1,6 +1,6 @@
 # Hunex Script
 
-several wheels for Hunex Engine games, only tested on Nijigasaki VN Switch Demo (にじちず)
+several wheels for Hunex Engine games, only tested on Nijigasaki VN Switch Demo ([にじちず](https://gitea.tqlwsl.moe/wlt233/nijichizu_heslnk))
 
 remember to `pip install pylzss` before use
 
