@@ -28,6 +28,10 @@ you may change code below in `hese_dasm.py` before use on other Hunex games (Mei
 
 - `hpb_unpack.py`: modded from https://gist.github.com/kjy00302/34461f7ced79be7c48e3d46ae94f047b
 
+## hese_maker: messy code to maker a fanmade scene script
+
+`ayumu_birthday.txt`: see https://www.bilibili.com/video/BV1Bv9hYZEGh/
+
 ## credit
 
 - https://gist.github.com/kjy00302

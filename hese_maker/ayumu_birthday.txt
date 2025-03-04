@@ -1,0 +1,181 @@
+
+
+
+BGM, bgm098
+BACKGROUND, bg002_00, 0.3
+TEXT, 476
+（独自一人的步梦推开了活动室的门）
+
+
+
+BACKGROUND, BG000_00, 0.3, rule_009
+CHARACTER, ch01_03S_04, 3/5
+SE, se_110_0020
+SPEECH, part_ch01_31
+NAMETAG, 79
+TEXT, 477
+步梦：欸？今天大家都不在吗...灯也关着...？连那孩子也不见了踪影...
+
+
+
+BACKGROUND, BG007_00, 0.3, rule_016
+CHARACTER, ch01_03S_04, 3/5
+SE, se_110_0061
+BGM, bgm040
+TEXT, 478
+（她伸手打开了灯，随之而来的是礼炮的响声，以及从天而落的无数彩纸）
+
+
+
+
+CLEARCHARA
+CHARACTER, ch08_03S_01, 1/4
+CHARACTER, ch04_03S_01, 2/4
+CHARACTER, ch06_03S_02, 3/4
+CHARACTER, ch11_03S_01, 4/4
+TRANS, 0.3
+WAIT, 1.0
+
+CLEARCHARA
+CHARACTER, ch05_03M_02, 1/3
+CHARACTER, ch07_25M_02, 2/3
+CHARACTER, ch12_03M_02, 3/3
+TRANS, 0.3
+WAIT, 1.0
+
+CLEARCHARA
+CHARACTER, ch02_03S_02, 1/4
+CHARACTER, ch03_03S_02, 2/4
+CHARACTER, ch10_25S_02, 3/4
+CHARACTER, ch09_03S_02, 4/4
+TRANS, 0.3
+
+NAMETAG, 15
+SPEECH, sc_hol01_0010_ch00_001
+TEXT, 479
+全员：步梦酱，生日快乐——！！！
+
+
+
+CLEARCHARA
+CHARACTER, ch01_03M_05, 3/5
+TRANS, 0.3
+SPEECH, part_ch01_20
+NAMETAG, 79
+TEXT, 480
+步梦：欸？欸——？！大家怎么会...
+
+
+
+CLEARCHARA
+CHARACTER, ch02_03M_06, 1/3
+CHARACTER, ch07_25M_02, 2/3
+CHARACTER, ch04_03M_01, 3/3
+TRANS, 0.3
+
+SPEECH, part_ch02_23
+NAMETAG, 1
+TEXT, 481
+霞：诶嘿嘿，小霞霞的生日吓一跳作战大成功！步梦前辈有被吓到了吗？
+
+SPEECH, part_ch07_21
+NAMETAG, 3
+TEXT, 482
+雪菜：我们可是从很久以前就开始策划了哦，要给步梦同学一个大惊喜！
+
+SPEECH, part_ch04_12
+NAMETAG, 77
+TEXT, 483
+果林：啊啦，步梦同学脸好红哦，这份惊喜是否让你心跳加速了呢？
+
+
+
+CLEARCHARA
+CHARACTER, ch05_03M_02, 1/2
+CHARACTER, ch09_03M_02, 2/2
+TRANS, 0.3
+
+SPEECH, part_ch05_36
+NAMETAG, 72
+TEXT, 484
+爱：Surpr'ise'！步梦同学快坐在中间的「椅子」上吧，因为是 'yizi'！
+
+SPEECH, part_ch09_12
+NAMETAG, 82
+TEXT, 485
+璃奈：璃奈酱板子「欢呼！」步梦前辈，生日快乐！
+
+
+
+CLEARCHARA
+CHARACTER, ch10_25M_05, 1/2
+CHARACTER, ch12_03M_02, 2/2
+TRANS, 0.3
+
+SPEECH, part_ch10_30
+NAMETAG, 78
+TEXT, 486
+栞子：真是的，又把活动室搞得一团糟，一会记得要好好打扫地上的彩纸哦。
+
+SPEECH, part_ch12_36
+NAMETAG, 38
+TEXT, 487
+岚珠：哎呀，不要在意这些细节啦，今天就让我们好好庆祝一下步梦的生日吧！
+
+
+
+CLEARCHARA
+CHARACTER, ch03_03M_02, 1/2
+CHARACTER, ch11_03M_05, 2/2
+TRANS, 0.3
+
+SPEECH, part_ch03_5
+NAMETAG, 2
+TEXT, 488
+雫：步梦前辈总是一步一步地勇往直前，这份努力的样子我们一直都看在眼里。我也想成为像前辈一样的人呢。对了，这本《偶像演技进阶》作为生日礼物送给前辈，希望能对前辈有所帮助呢。
+
+SPEECH, part_ch11_33
+NAMETAG, 37
+TEXT, 489
+米：我也有礼物想要送给你，但是...现在不许拆！
+
+
+
+CLEARCHARA
+CHARACTER, ch08_03M_01, 1/2
+CHARACTER, ch06_03M_06, 2/2
+TRANS, 0.3
+
+SPEECH, part_ch08_9
+NAMETAG, 28
+TEXT, 490
+艾：彼方同学还做了看起来好好吃的生日蛋糕哦，快来尝尝看...啊小彼方快醒醒！
+
+SPEECH, part_ch06_36
+NAMETAG, 71
+TEXT, 491
+彼：Zzz...步梦同学...生日快乐...Zzz...你也要来一起睡吗...
+
+
+
+CLEARCHARA
+CHARACTER, ch01_03M_02, 3/5
+TRANS, 0.3
+
+TEXT, 492
+（你酱从人群的后面走出，把点亮着蜡烛的生日蛋糕端到了桌子中间，并拿出了一本封面十分精致的相册）
+
+NAMETAG, 51
+TEXT, 493
+你酱：步梦，生日快乐！大家的心意，我都帮你记录下来了哦。这本相册收集了同好会大家的许多时刻，是我送给你的生日礼物，希望你会喜欢。
+
+SPEECH, part_ch01_33
+NAMETAG, 79
+TEXT, 494
+步梦：谢谢大家...这一定是、我人生中最幸福的一次生日...！
+
+
+
+SEPIA, 1, 2.0
+
+

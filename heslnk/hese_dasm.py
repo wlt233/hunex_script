@@ -437,7 +437,7 @@ def get_dialog(no):
 
 
 def parse_dasm(dasm_path, output_path):
-    print(f"{file_name}", end="")
+    print(f"{dasm_path}", end="")
     with open(dasm_path, 'rb') as f:
         instructions = f.readlines()
         
