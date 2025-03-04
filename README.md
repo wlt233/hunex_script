@@ -30,7 +30,8 @@ you may change code below in `hese_dasm.py` before use on other Hunex games (Mei
 
 ## hese_maker: messy code to maker a fanmade scene script
 
-`ayumu_birthday.txt`: see https://www.bilibili.com/video/BV1Bv9hYZEGh/
+- `compiler.py`: not a compiler
+- `ayumu_birthday.txt`: see https://www.bilibili.com/video/BV1Bv9hYZEGh/
 
 ## credit
 
