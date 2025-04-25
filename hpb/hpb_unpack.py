@@ -1,10 +1,23 @@
+import io
+import os
 import struct
-from zlib import crc32
-from pathlib import Path
 import sys
+from pathlib import Path
+from zlib import crc32
+
+import lzss  # install pylzss, not lzss (requires initial buffer value argument)
 
 # Based on https://github.com/YuriSizuku/GalgameReverse/blob/master/project/hunex/src/hunex_hpb.py
 # modded from https://gist.github.com/kjy00302/34461f7ced79be7c48e3d46ae94f047b
+
+
+def hlzsdecomp(f):
+    magic, version, compsize, size = struct.unpack('<4I16x', f.read(32))
+    assert magic == int.from_bytes(b'HLZS', 'little')
+    data = lzss.decompress(f.read(compsize), 0)
+    assert len(data) == size
+    return data
+
 
 packname = sys.argv[1]
 
@@ -19,19 +32,29 @@ f.seek(nameoffset, 0)
 paths = list(map(lambda x: x.decode(), f.read().split(b'\0')[:count]))
 f.seek(offset, 0)
 
-print(f'filesize: {size}, itemcnt: {count}')
+print(f'file size: {size}, item count: {count}')
 
 for i in range(count):
     data = f.read(32)
-    # TODO: QIQI or I4xII4xI?
-    item = struct.unpack('<QIQI8x', data)
-    itemoffset, itemsize, itemcrc = item[0], item[2], item[3]
-    print(f'offset:{itemoffset} size:{itemsize} crc:{itemcrc:08x} -> {paths[i]}')
-    # if itemsize == 0: continue
-    data_f.seek(itemoffset, 0)
-    itemdata = data_f.read(itemsize)
-    assert itemcrc == crc32(itemdata)
+    item = struct.unpack('<QIIIII4x', data)
+    offset, size, decomp_size, crc, decomp_crc = item[0], item[2], item[3], item[4], item[5]
+    print(f'offset:{offset} size:{size} crc:{crc:08x} -> {paths[i]}')
+    
+    # if size == 0: continue
+    data_f.seek(offset, 0)
+    data = data_f.read(size)
+    assert crc == crc32(data)
+    
+    if size != 0 and decomp_size == 0: # ns, no lzss compressed
+        pass
+    elif size != 0 and decomp_size != 0: #steam, lzss compressed
+        data = hlzsdecomp(io.BytesIO(data))
+        assert len(data) == decomp_size
+        assert decomp_crc == crc32(data)
+    elif size == 0: # empty file
+        pass
+    
     p = (Path(f'{packname}_out') / (f"{i:03d}."+paths[i].replace('/', '__'))).resolve()
     p.parent.mkdir(parents=True, exist_ok=True)
     with p.open('wb') as item_f:
-        item_f.write(itemdata)
+        item_f.write(data)

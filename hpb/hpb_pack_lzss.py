@@ -1,7 +1,28 @@
+import io
 import struct
-from zlib import crc32
-from pathlib import Path
 import sys
+from pathlib import Path
+from zlib import crc32
+
+import lzss  # install pylzss, not lzss (requires initial buffer value argument)
+
+
+def lzsscomp(data):
+    encode_data = lzss.compress(data, 0)
+    encode_size = len(encode_data)
+    decode_size = len(data)
+    output_file = io.BytesIO()
+    output_file.write(b"HLZS")
+    output_file.write(struct.pack('<I', 0x00001000))
+    output_file.write(struct.pack('<I', encode_size))
+    output_file.write(struct.pack('<I', decode_size))
+    output_file.write(b'\x00' * 16)
+    output_file.write(encode_data)
+    # if len(encode_data) % 32 != 0:
+    #     output_file.write(b'\x00' * (32 - len(encode_data) % 32))
+    return output_file.getvalue()
+
+
 
 def repack(packname):
     # 收集所有解压后的文件
@@ -21,8 +42,18 @@ def repack(packname):
         file_path = base_dir / path
         with open(file_path, 'rb') as f:
             data = f.read()
-        crc = crc32(data)
         size = len(data)
+        if size:
+            crc = crc32(data)
+            data = lzsscomp(data)
+            comp_crc = crc32(data)
+            comp_size = len(data)
+        else:
+            crc = 0
+            data = b''
+            comp_crc = 0
+            comp_size = 0
+
         offset = len(hpb_data)  # 当前数据偏移量
         if len(data) % 64 != 0 or not data:
             data += b'\0' * (64 - len(data) % 64)
@@ -31,8 +62,11 @@ def repack(packname):
             'offset': offset,
             'size': size,
             'crc': crc,
-            'path': path
+            'path': path,
+            'comp_size': comp_size,
+            'comp_crc': comp_crc,
         })
+        print(f'Packing {path} -> offset: {offset}, size: {size}, crc: {crc:08x}')
     
     # 构建hph文件内容
     magic = int.from_bytes(b'HPAC', 'little')
@@ -46,11 +80,12 @@ def repack(packname):
     # 条目区域（每个条目32B）
     entries_bin = bytearray()
     for entry in entries:
-        # 结构：Q(offset) I(0) Q(size) I(crc) 8x填充
-        entry_bin = struct.pack('<QIQI8x', 
+        entry_bin = struct.pack('<QIIIII4x', 
                                entry['offset'], 
-                               0,  # 未知字段，置0
-                               entry['size'], 
+                               0,  # key，置0
+                               entry['comp_size'],
+                               entry['size'],
+                               entry['comp_crc'],
                                entry['crc'])
         entries_bin.extend(entry_bin)
     
