@@ -34,6 +34,7 @@ for ab_name in os.listdir(ab_dir_path):
                     print(f"{img_path} saved to {name}")
                     need_save = True
                 else:
+                    pass
                     # print(f"Image {name} not found")
         
         if need_save:
