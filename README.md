@@ -29,6 +29,7 @@ you may change code below in `hese_dasm.py` before use on other Hunex games (Mei
 - `hpb_unpack.py`: modded from https://gist.github.com/kjy00302/34461f7ced79be7c48e3d46ae94f047b
 - `hpb_pack.py`: pack hpb/hph from unpack output dir (switch)
 - `hpb_pack_lzss.py`: pack with lzss compression (steam)
+- `batch_pack_ab.py`: batch replace images of output assetbundles (for steam ver)
 
 ## hese_maker: messy code to make a fanmade scene script
 
