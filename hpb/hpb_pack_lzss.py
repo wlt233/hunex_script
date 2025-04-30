@@ -31,14 +31,17 @@ def repack(packname):
     for file_path in base_dir.rglob('*'):
         if file_path.is_file():
             rel_path = file_path.relative_to(base_dir)
-            files.append(str(rel_path).replace('\\', '/'))  # 统一使用正斜杠
-    files.sort()  # 按路径排序，可能需要与原顺序一致
+            p = str(rel_path).replace('\\', '/')
+            index = int(p.split('.')[0])
+            files.append((index, p))  # 统一使用正斜杠
+            
+    files.sort(key=lambda x: x[0])  # 按路径排序，可能需要与原顺序一致
     count = len(files)
     
     # 生成hpb文件内容并收集条目信息
     entries = []
     hpb_data = bytearray(0)
-    for path in files:
+    for i, path in files:
         file_path = base_dir / path
         with open(file_path, 'rb') as f:
             data = f.read()
@@ -91,7 +94,7 @@ def repack(packname):
     
     # 文件名区域（以null分隔）
     name_block = bytearray()
-    for path in files:
+    for i, path in files:
         path = ".".join(path.split('.')[1:])
         path = path.replace('__', '/')
         name_block.extend(path.encode('utf-8'))
